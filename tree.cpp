@@ -2,15 +2,15 @@
 
 using namespace std;
 
-class treeNode{
+class TreeNode{
 	private: 
 		int val;
-		treeNode* left;
-		treeNode* right;
+		TreeNode* left;
+		TreeNode* right;
 
 	
 	public:
-		treeNode(int n){
+		TreeNode(int n){
 			val=n;
 			left=NULL;
 			right=NULL;
@@ -21,16 +21,16 @@ class treeNode{
 		int getVal(){
 			return val;
 		}
-		void setLeft(treeNode* l){
+		void setLeft(TreeNode* l){
 			left=l;
 		}
-		treeNode* getLeft(){
+		TreeNode* getLeft(){
 			return left;
 		}
-		void setRight(treeNode* r){
+		void setRight(TreeNode* r){
 			right=r;
 		}
-		treeNode* getRight(){
+		TreeNode* getRight(){
 			return right;
 		}
 };
@@ -41,3 +41,23 @@ int main(){
 	cout<<"Hello World"<<endl;
 	return 0;
 }
+
+class Tree{
+	private:
+		TreeNode* root;
+
+	public:
+		Tree(){
+			root = NULL;
+		}
+		Tree(TreeNode* n){
+			root = n;
+		}
+		void setRoot(TreeNode* n){
+			root = n;
+		}
+		TreeNode* getRoot(){
+			return root;
+		}
+
+};
