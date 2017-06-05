@@ -36,12 +36,6 @@ class TreeNode{
 };
 
 
-
-int main(){
-	cout<<"Hello World"<<endl;
-	return 0;
-}
-
 class Tree{
 	private:
 		TreeNode* root;
@@ -61,3 +55,17 @@ class Tree{
 		}
 
 };
+
+
+int main(){
+	cout<<"Hello World"<<endl;
+	TreeNode root = new TreeNode(10);
+	Tree T =  new Tree(root);
+	TreeNode temp = new Node(5);
+	T.getRoot().setLeft(temp);
+	temp = new Node(3);
+	T.getRoot().getLeft().setLeft(3);
+	return 0;
+}
+
+
