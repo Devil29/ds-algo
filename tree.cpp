@@ -54,17 +54,38 @@ class Tree{
 			return root;
 		}
 
+		void printInOrder(TreeNode* curr){
+			if(curr == NULL){
+				cout<<"Hello World"<<endl;
+				// return 0;
+			}
+			printInOrder(curr->getLeft());
+			cout<<(curr->getVal())<<endl;;
+			printInOrder(curr->getRight());
+ 	}
+
 };
 
 
 int main(){
 	cout<<"Hello World"<<endl;
-	TreeNode root = new TreeNode(10);
+	TreeNode* root = new TreeNode(10);
 	Tree T =  new Tree(root);
-	TreeNode temp = new Node(5);
+
+	TreeNode* temp = new TreeNode(5);
 	T.getRoot().setLeft(temp);
-	temp = new Node(3);
-	T.getRoot().getLeft().setLeft(3);
+	temp = new TreeNode(3);
+	T.getRoot().getLeft().setLeft(temp);
+	temp = new TreeNode(2);
+	T.getRoot().getLeft().setRight(temp);
+	temp = new TreeNode(6);
+	T.getRoot().setRight(temp);
+	temp = new TreeNode(7);
+	T.getRoot().getRight().setLeft(temp);
+	temp = new TreeNode(9);
+	T.getRoot().getRight().setRight(temp);
+
+	T.printInOrder(T.getRoot());
 	return 0;
 }
 
