@@ -30,3 +30,21 @@ int main(){
 	cout<<"Hello World"<<endl;
 	return 0;
 }
+
+class List{
+	private:
+		linkedList* root;
+	public:
+		List(){
+			root=NULL;
+		}
+		List(linkedList* n){
+			root=n;
+		}
+		void setRoot(linkedList* n){
+			root = n;
+		}
+		linkedList* getRoot(){
+			return root;
+		}
+};
