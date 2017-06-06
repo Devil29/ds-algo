@@ -15,19 +15,26 @@
 
 using namespace std;
 
+
+
 class linkedList{
 	private:
+		Node root;
 		int value;
 		linkedList* address;
+		linkedList(){
+		root=NULL;
+	
+		}
 	public:
 		linkedList(int v){
 			value=v;
 			address=NULL;
 		}
-		void setValue(int v){
+		void setRoot(int v){
 			value=v;
 		}
-		int getValue(){
+		int getRoot(){
 			return value;
 		}
 		void setAddress(linkedList* a){
@@ -36,22 +43,26 @@ class linkedList{
 		linkedList* getAddress(){
 			return address;
 		}
+		void addNode(Node n){
+			if(root==NULL){
+				root=n;
+			}
+			else{
+				n.setNext(root);
+				root=n;
+			}
+		}
+		
 };
 
-
-int main(){
-	cout<<"Hello World"<<endl;
-	return 0;
-}
-
-class List{
+class Node{
 	private:
 		linkedList* root;
 	public:
-		List(){
+		Node(){
 			root=NULL;
 		}
-		List(linkedList* n){
+		Node(linkedList* n){
 			root=n;
 		}
 		void setRoot(linkedList* n){
@@ -61,3 +72,28 @@ class List{
 			return root;
 		}
 };
+
+class Node{
+	private:
+		linkedList* root;
+	public:
+		Node(){
+			root=NULL;
+		}
+		Node(linkedList* n){
+			root=n;
+		}
+		void setRoot(linkedList* n){
+			root = n;
+		}
+		linkedList* getRoot(){
+			return root;
+		}
+};
+
+
+int main(){
+	cout<<"Hello World"<<endl;
+	return 0;
+}
+
