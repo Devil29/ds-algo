@@ -79,11 +79,29 @@ class Tree{
 
 		void printInOrder(TreeNode* curr){
 			if(curr == NULL){
-				cout<<"Hello World"<<endl;
+				return;
 			}
 			printInOrder(curr->getLeft());
-			cout<<(curr->getVal())<<endl;;
+			cout<<(curr->getVal())<<endl;
 			printInOrder(curr->getRight());
+ 		}
+
+ 		void printPostOrder(TreeNode* curr){
+			if(curr == NULL){
+				return;
+			}
+			printPostOrder(curr->getLeft());
+			printPostOrder(curr->getRight());
+			cout<<(curr->getVal())<<endl;
+ 		}
+
+ 		void printPreOrder(TreeNode* curr){
+			if(curr == NULL){
+				return;
+			}
+			cout<<(curr->getVal())<<endl;
+			printPreOrder(curr->getLeft());
+			printPreOrder(curr->getRight());
  		}
 };
 
@@ -107,6 +125,9 @@ int main(){
 	T->getRoot()->getRight()->setRight(temp);
 
 	T->printInOrder(T->getRoot());
+	T->printPostOrder(T->getRoot());
+	T->printPreOrder(T->getRoot());
+
 	return 0;
 }
 
