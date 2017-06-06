@@ -170,32 +170,8 @@ class Tree{
 
 int main(){
 	cout<<"Starting..."<<endl;
-	//TreeNode* root = new TreeNode(20);
 	Tree* T =  new Tree();
 
-	// TreeNode* temp = new TreeNode(5);
-	// T->getRoot()->setLeft(temp);
-	// temp = new TreeNode(3);
-	// T->getRoot()->getLeft()->setLeft(temp);
-	// temp = new TreeNode(2);
-	// T->getRoot()->getLeft()->setRight(temp);
-	// temp = new TreeNode(6);
-	// T->getRoot()->setRight(temp);
-	// temp = new TreeNode(7);
-	// T->getRoot()->getRight()->setLeft(temp);
-	// temp = new TreeNode(9);
-	// T->getRoot()->getRight()->setRight(temp);
-	// T->addNode(1);
-	// T->addNode(2);
-	// T->addNode(3);
-	// T->addNode(7);
-	// T->addNode(8);
-	// T->addNode(9);
-
-
-	// T->printInOrder(T->getRoot());
-	// T->printPostOrder(T->getRoot());
-	// T->printPreOrder(T->getRoot());
 	TreeNode* tempRoot;
 	int choice,item,depthMax,depthMin;
 	while (1)
