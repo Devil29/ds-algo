@@ -60,16 +60,17 @@ void queue_list::insert(int item)
 
 }
 
-void queue_list::del()
+int queue_list::del()
 
 {
 
     node *tmp;
 
-    if (front == NULL)
+    if (front == NULL){
 
         cout<<"Queue Underflow"<<endl;
-
+    	return -1;
+    }
     else
 
     {       
@@ -77,13 +78,14 @@ void queue_list::del()
         tmp = front;
 
         cout<<"Element Deleted: "<<tmp->info<<endl;
-
+        tempPrint = temp->info ;
         front = front->link;
 
         free(tmp);
+        return tempPrint;
 
     }
-
+    return -1;
 }
 
 void queue_list::display()
@@ -117,6 +119,19 @@ void queue_list::display()
         cout<<endl;
 
     }
+
+}
+
+int Queue(int item){
+	queue_list ql;
+
+	if(item == -1){
+		return ql.del();
+	}else{
+		ql.insert(item);
+		return -1;
+	}
+	
 
 }
 
