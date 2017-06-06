@@ -10,7 +10,7 @@
 	find the linked list is palindrome or not
 	convert to double linked list
 	remove a element in the linked list
-	
+
 */
 
 using namespace std;
@@ -45,7 +45,7 @@ class Node{
 class linkedList{
 	private:
 		Node* Head;
-		
+
 	public:
 		linkedList(){
 			Head=NULL;
@@ -80,15 +80,19 @@ class linkedList{
 				Head=Head->getNext();
 			}
 		}
-		void addNodeLast(Node n){
-			Node temp=head;
-			Node temp2=temp;
-			while(temp!=NULL){
-				temp2=temp;
-				temp=temp->getNext();
+		void addNodeLast(Node *n){
+			if(Head==NULL){
+				Head=n;
 			}
-			temp2->setNext(n);
-		}
+			else {
+				Node temp=Head;
+				while(temp!=NULL){
+					temp=Head;
+					temp=temp->getNext();
+				}
+			temp->setNext(n);
+			}
+			
 		void deleteLastNode(){
 			if(head==NULL)
 				cout<<"Empty Linkedlist"<<endl;
@@ -104,7 +108,7 @@ class linkedList{
 				prev=prev.setNext(NULL);
 			}
 		}
-		
+
 };
 
 
@@ -118,7 +122,7 @@ int main(){
 		cout<<"2 Add a node at beginning"<<endl;
 		cout<<"3 Delete a node from beginning"<<endl;
 		cout<<"4 Print the linkedList"<<endl;
-		
+
 		cin>>n;
 		switch(n){
 			case 1:
@@ -133,14 +137,14 @@ int main(){
 					cin>>q;
 					Node* x=new Node(q);
 					ll->addNode(x);
-				}					
+				}
 				break;
 			}
 			case 3:
 				break;
 			case 4:
 				break;
-			
+
 		}
 	}
 	return 0;
