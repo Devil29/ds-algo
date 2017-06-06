@@ -17,22 +17,24 @@ using namespace std;
 
 class Node{
 	private:
-		linkedList* root;
+		Node* next;
+		int value;
 	public:
-		Node(){
-			root=NULL;
+		Node(int v){
+			value=v;
+			next=NULL;
 		}
-		Node(linkedList* n){
-			root=n;
+		Node(Node* n){
+			next=n;
 		}
-		void setRoot(linkedList* n){
-			root = n;
+		void setRoot(Node* n){
+			next = n;
 		}
-		linkedList* getRoot(){
-			return root;
+		Node* getRoot(){
+			return next;
 		}
-		void setAddress(linkedList* a){
-			address=a;
+		void setNext(Node* a){
+			next=a;
 		}
 };
 
@@ -43,28 +45,28 @@ class linkedList{
 		
 	public:
 		linkedList(){
-			root=NULL;
+			Head=NULL;
 		}
 
 		linkedList(Node *n){
 			Head=n;
 		}
 
-		void setHead(Node* n){
-			value = v;
+		void setHead(Node* h){
+			Head = h;
 		}
 
-		int getHead(){
+		Node getHead(){
 			return Head;
 		}
 
 		void addNode(Node* n){
-			if(root==NULL){
-				root=n;
+			if(Head==NULL){
+				Head=n;
 			}
 			else{
-				n->setAddress(root);
-				root=n;
+				n->setNext(Head);
+				Head=n;
 			}
 		}
 		
