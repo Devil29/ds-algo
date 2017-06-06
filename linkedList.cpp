@@ -80,6 +80,15 @@ class linkedList{
 				Head=Head->getNext();
 			}
 		}
+		void addNodeLast(Node n){
+			Node temp=head;
+			Node temp2=temp;
+			while(temp!=NULL){
+				temp2=temp;
+				temp=temp->getNext();
+			}
+			temp2->setNext(n);
+		}
 		
 };
 
