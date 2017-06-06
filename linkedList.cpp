@@ -14,12 +14,13 @@
 */
 
 using namespace std;
-
+class Node{
+};
 
 
 class linkedList{
 	private:
-		Node root;
+		Node* root;
 		int value;
 		linkedList* address;
 		linkedList(){
@@ -37,41 +38,22 @@ class linkedList{
 		int getRoot(){
 			return value;
 		}
-		void setAddress(linkedList* a){
-			address=a;
-		}
+		
 		linkedList* getAddress(){
 			return address;
 		}
-		void addNode(Node n){
+		void addNode(Node* n){
 			if(root==NULL){
 				root=n;
 			}
 			else{
-				n.setNext(root);
+				n->setAddress(root);
 				root=n;
 			}
 		}
 		
 };
 
-class Node{
-	private:
-		linkedList* root;
-	public:
-		Node(){
-			root=NULL;
-		}
-		Node(linkedList* n){
-			root=n;
-		}
-		void setRoot(linkedList* n){
-			root = n;
-		}
-		linkedList* getRoot(){
-			return root;
-		}
-};
 
 class Node{
 	private:
@@ -88,6 +70,9 @@ class Node{
 		}
 		linkedList* getRoot(){
 			return root;
+		}
+		void setAddress(linkedList* a){
+			address=a;
 		}
 };
 
