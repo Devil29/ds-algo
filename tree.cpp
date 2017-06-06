@@ -2,7 +2,6 @@
 
 /**TO DO
 	
-	insert a node
 	levelorder
 	MaxheightofTree
 	Min Height of tree
@@ -127,16 +126,32 @@ class Tree{
 				addNodeToTree(root,newNode);
 			}
 		}
+
+		//depth
+		int maxDepth(TreeNode* node){
+	        if (node == NULL)
+	            return 0;
+	        else
+	        {
+	            int leftDepth = maxDepth(node->getLeft());
+	            int rightDepth = maxDepth(node->getRight());
+	  
+	            if (leftDepth > rightDepth)
+	                return (leftDepth + 1);
+	             else
+	                return (rightDepth + 1);
+	        }
+	    }
 };
 
 
 int main(){
-	cout<<"Hello World"<<endl;
-	TreeNode* root = new TreeNode(20);
-	Tree* T =  new Tree(root);
+	cout<<"Starting..."<<endl;
+	//TreeNode* root = new TreeNode(20);
+	Tree* T =  new Tree();
 
-	TreeNode* temp = new TreeNode(5);
-	T->getRoot()->setLeft(temp);
+	// TreeNode* temp = new TreeNode(5);
+	// T->getRoot()->setLeft(temp);
 	// temp = new TreeNode(3);
 	// T->getRoot()->getLeft()->setLeft(temp);
 	// temp = new TreeNode(2);
@@ -147,17 +162,98 @@ int main(){
 	// T->getRoot()->getRight()->setLeft(temp);
 	// temp = new TreeNode(9);
 	// T->getRoot()->getRight()->setRight(temp);
-	T->addNode(1);
-	T->addNode(2);
-	T->addNode(3);
-	T->addNode(7);
-	T->addNode(8);
-	T->addNode(9);
+	// T->addNode(1);
+	// T->addNode(2);
+	// T->addNode(3);
+	// T->addNode(7);
+	// T->addNode(8);
+	// T->addNode(9);
 
 
-	T->printInOrder(T->getRoot());
-	T->printPostOrder(T->getRoot());
-	T->printPreOrder(T->getRoot());
+	// T->printInOrder(T->getRoot());
+	// T->printPostOrder(T->getRoot());
+	// T->printPreOrder(T->getRoot());
+	int choice,item,depth;
+	while (1)
+
+    {
+
+        cout<<"\n-------------"<<endl;
+
+        cout<<"Operations on Tree"<<endl;
+
+        cout<<"\n-------------"<<endl;
+
+        cout<<"1.Insert Element into the Tree"<<endl;
+
+        cout<<"2.maximum depth of tree"<<endl;
+
+        cout<<"3.Traverse the tree"<<endl;
+
+        cout<<"4.Quit"<<endl;
+
+        cout<<"Enter your Choice: ";
+
+        cin>>choice;
+
+        switch(choice)
+
+        {
+
+        case 1:
+
+            cout<<"Enter value to be inserted into the queue: ";
+
+            cin>>item;
+
+            T->addNode(item);
+
+            break;
+
+        case 2:
+
+           	depth = T->maxDepth(T->getRoot());
+           	cout<<"maxDepth ="<<depth<<endl;
+
+            break;
+
+        case 3:
+	        cout<<"\n-------------"<<endl;
+
+	        cout<<"Inorder"<<endl;
+
+	        cout<<"\n-------------"<<endl;
+            T->printInOrder(T->getRoot());
+            cout<<"\n-------------"<<endl;
+
+	        cout<<"PostOrder"<<endl;
+
+	        cout<<"\n-------------"<<endl;
+			T->printPostOrder(T->getRoot());
+			cout<<"\n-------------"<<endl;
+
+	        cout<<"PreOrder"<<endl;
+
+	        cout<<"\n-------------"<<endl;
+			T->printPreOrder(T->getRoot());
+
+            break;
+
+        case 4:
+
+            exit(1);
+
+            break;
+
+        default:
+
+            cout<<"Wrong Choice"<<endl;
+
+        }
+
+    }
+
+    return 0;
 
 	return 0;
 }
