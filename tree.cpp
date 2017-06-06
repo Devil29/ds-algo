@@ -142,6 +142,21 @@ class Tree{
 	                return (rightDepth + 1);
 	        }
 	    }
+
+	    int minDepth(TreeNode* node){
+	        if (node == NULL)
+	            return 0;
+	        else
+	        {
+	            int leftDepth = maxDepth(node->getLeft());
+	            int rightDepth = maxDepth(node->getRight());
+	  
+	            if (leftDepth < rightDepth)
+	                return (leftDepth + 1);
+	             else
+	                return (rightDepth + 1);
+	        }
+	    }
 };
 
 
@@ -173,7 +188,7 @@ int main(){
 	// T->printInOrder(T->getRoot());
 	// T->printPostOrder(T->getRoot());
 	// T->printPreOrder(T->getRoot());
-	int choice,item,depth;
+	int choice,item,depthMax,depthMin;
 	while (1)
 
     {
@@ -186,7 +201,7 @@ int main(){
 
         cout<<"1.Insert Element into the Tree"<<endl;
 
-        cout<<"2.maximum depth of tree"<<endl;
+        cout<<"2.Depth of tree"<<endl;
 
         cout<<"3.Traverse the tree"<<endl;
 
@@ -212,8 +227,10 @@ int main(){
 
         case 2:
 
-           	depth = T->maxDepth(T->getRoot());
-           	cout<<"maxDepth ="<<depth<<endl;
+           	depthMax = T->maxDepth(T->getRoot());
+           	depthMin = T->minDepth(T->getRoot());
+           	cout<<"maxDepth ="<<depthMax<<endl;
+           	cout<<"minDepth ="<<depthMin<<endl;
 
             break;
 
