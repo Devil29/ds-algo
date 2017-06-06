@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 /**TO DO
 	
@@ -165,6 +166,16 @@ class Tree{
         	root->setRight(left);  
         	return root;
     	}
+    	void LeafNode(TreeNode* curr){
+			if(curr == NULL){
+				return;
+			}
+			LeafNode(curr->getLeft());
+			LeafNode(curr->getRight());
+			if(!(curr->getRight()||curr->getLeft())){
+				cout<<(curr->getVal())<<endl;
+			}
+ 		}
 };
 
 
@@ -189,8 +200,10 @@ int main(){
         cout<<"2.Depth of tree"<<endl;
 
         cout<<"3.Traverse the tree"<<endl;
+        
+        cout<<"4.Leaf NOde"<<endl;
 
-        cout<<"4.Quit"<<endl;
+        cout<<"6.Quit"<<endl;
 
         cout<<"Enter your Choice: ";
 
@@ -243,7 +256,7 @@ int main(){
 
         case 4:
 
-            exit(1);
+            T->LeafNode(T->getRoot());
 
             break;
 
@@ -252,6 +265,9 @@ int main(){
            	tempRoot = T->invertTree(T->getRoot());
 
             break;
+        case 6:
+        	exit(0);
+        	break;
 
         default:
 
@@ -262,8 +278,6 @@ int main(){
     }
 
     return 0;
-
-	return 0;
 }
 
 
