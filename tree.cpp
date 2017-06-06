@@ -1,5 +1,28 @@
 #include <iostream>
 
+/**TO DO
+	
+	insert a node
+	preorder
+	posrorder
+	inorder
+	levelorder
+	MaxheightofTree
+	Min Height of tree
+	Invert Tree
+	Find all leaf node of tree
+	find all tree with one child
+	find all tree with two childs
+	find the diameter of tree
+	check tree is symmetric of not
+	find tree is balanced or not
+	Max root to leave sum
+	min  root to leave sum
+	Find the common ansestor of two node
+	convert a tree to linked list
+
+*/
+
 using namespace std;
 
 class TreeNode{
@@ -57,13 +80,11 @@ class Tree{
 		void printInOrder(TreeNode* curr){
 			if(curr == NULL){
 				cout<<"Hello World"<<endl;
-				// return 0;
 			}
 			printInOrder(curr->getLeft());
 			cout<<(curr->getVal())<<endl;;
 			printInOrder(curr->getRight());
- 	}
-
+ 		}
 };
 
 

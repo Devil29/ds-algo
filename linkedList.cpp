@@ -1,4 +1,17 @@
-#include<iostream>
+#include <iostream>
+
+/**TO DO
+
+	search all node
+	print linked list
+	print linked list from last
+	reverse linked list
+	check linked list have a cycle or not
+	find the linked list is palindrome or not
+	convert to double linked list
+	remove a element in the linked list
+	
+*/
 
 using namespace std;
 
