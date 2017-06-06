@@ -70,22 +70,22 @@ class Tree{
 int main(){
 	cout<<"Hello World"<<endl;
 	TreeNode* root = new TreeNode(10);
-	Tree T =  new Tree(root);
+	Tree* T =  new Tree(root);
 
 	TreeNode* temp = new TreeNode(5);
-	T.getRoot().setLeft(temp);
+	T->getRoot()->setLeft(temp);
 	temp = new TreeNode(3);
-	T.getRoot().getLeft().setLeft(temp);
+	T->getRoot()->getLeft()->setLeft(temp);
 	temp = new TreeNode(2);
-	T.getRoot().getLeft().setRight(temp);
+	T->getRoot()->getLeft()->setRight(temp);
 	temp = new TreeNode(6);
-	T.getRoot().setRight(temp);
+	T->getRoot()->setRight(temp);
 	temp = new TreeNode(7);
-	T.getRoot().getRight().setLeft(temp);
+	T->getRoot()->getRight()->setLeft(temp);
 	temp = new TreeNode(9);
-	T.getRoot().getRight().setRight(temp);
+	T->getRoot()->getRight()->setRight(temp);
 
-	T.printInOrder(T.getRoot());
+	T->printInOrder(T->getRoot());
 	return 0;
 }
 
