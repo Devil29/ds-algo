@@ -79,7 +79,7 @@ class Tree{
 
 		void printInOrder(TreeNode* curr){
 			if(curr == NULL){
-				cout<<"Hello World"<<endl;
+				return;
 			}
 			printInOrder(curr->getLeft());
 			cout<<(curr->getVal())<<endl;;
