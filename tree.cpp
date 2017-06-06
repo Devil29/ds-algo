@@ -157,6 +157,17 @@ class Tree{
 	                return (rightDepth + 1);
 	        }
 	    }
+
+	    TreeNode* invertTree(TreeNode* root) {
+	    	if (root == NULL) {
+	    		return NULL; 
+	    	}
+        	TreeNode* left = invertTree(root->getLeft()); 
+        	TreeNode* right = invertTree(root->getRight()); 
+        	root->setLeft(right);  
+        	root->setRight(left);  
+        	return root;
+    	}
 };
 
 
@@ -188,6 +199,7 @@ int main(){
 	// T->printInOrder(T->getRoot());
 	// T->printPostOrder(T->getRoot());
 	// T->printPreOrder(T->getRoot());
+	TreeNode* tempRoot;
 	int choice,item,depthMax,depthMin;
 	while (1)
 
@@ -259,6 +271,12 @@ int main(){
         case 4:
 
             exit(1);
+
+            break;
+
+        case 5:
+
+           	tempRoot = T->invertTree(T->getRoot());
 
             break;
 
