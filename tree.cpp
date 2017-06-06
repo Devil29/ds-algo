@@ -3,14 +3,11 @@
 /**TO DO
 	
 	levelorder
-	MaxheightofTree
-	Min Height of tree
-	Invert Tree
 	Find all leaf node of tree
 	find all tree with one child
 	find all tree with two childs
-	find the diameter of tree
-	check tree is symmetric of not
+	find the diameter of tree(?)
+	check tree is symmetric or not
 	find tree is balanced or not
 	Max root to leave sum
 	min  root to leave sum
