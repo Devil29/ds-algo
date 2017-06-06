@@ -86,7 +86,39 @@ class linkedList{
 
 
 int main(){
+	int n;
 	cout<<"Hello World"<<endl;
+	linkedList* ll=NULL;
+	while(1){
+		cout<<"1 Enter root node"<<endl;
+		cout<<"2 Add a node at beginning"<<endl;
+		cout<<"3 Delete a node from beginning"<<endl;
+		cout<<"4 Print the linkedList"<<endl;
+		
+		cin>>n;
+		switch(n){
+			case 1:
+				ll->getHead();
+				break;
+			case 2:{
+				if(ll=NULL)
+					cout<<"Linked list empty"<<endl;
+				else{
+					int q;
+					cout<<"Add the node"<<endl;
+					cin>>q;
+					Node* x=new Node(q);
+					ll->addNode(x);
+				}					
+				break;
+			}
+			case 3:
+				break;
+			case 4:
+				break;
+			
+		}
+	}
 	return 0;
 }
 
