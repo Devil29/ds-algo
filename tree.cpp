@@ -215,7 +215,7 @@ int main(){
 
         case 1:
 
-            cout<<"Enter value to be inserted into the queue: ";
+            cout<<"Enter value to be inserted into the tree: ";
 
             cin>>item;
 
