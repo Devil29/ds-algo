@@ -36,6 +36,9 @@ class Node{
 		void setNext(Node* a){
 			next=a;
 		}
+		Node* getNext(){
+			return next;
+		}
 };
 
 
@@ -67,6 +70,14 @@ class linkedList{
 			else{
 				n->setNext(Head);
 				Head=n;
+			}
+		}
+		void DeleteNode(){
+			if(Head==NULL){
+				cout<<"LinkedList is empty."<<endl;
+			}
+			else{
+				Head=Head->getNext();
 			}
 		}
 		
