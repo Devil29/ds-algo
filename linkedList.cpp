@@ -14,46 +14,6 @@
 */
 
 using namespace std;
-class Node{
-};
-
-
-class linkedList{
-	private:
-		Node* root;
-		int value;
-		linkedList* address;
-		linkedList(){
-		root=NULL;
-	
-		}
-	public:
-		linkedList(int v){
-			value=v;
-			address=NULL;
-		}
-		void setRoot(int v){
-			value=v;
-		}
-		int getRoot(){
-			return value;
-		}
-		
-		linkedList* getAddress(){
-			return address;
-		}
-		void addNode(Node* n){
-			if(root==NULL){
-				root=n;
-			}
-			else{
-				n->setAddress(root);
-				root=n;
-			}
-		}
-		
-};
-
 
 class Node{
 	private:
@@ -75,6 +35,41 @@ class Node{
 			address=a;
 		}
 };
+
+
+class linkedList{
+	private:
+		Node* Head;
+		
+	public:
+		linkedList(){
+			root=NULL;
+		}
+
+		linkedList(Node *n){
+			Head=n;
+		}
+
+		void setHead(Node* n){
+			value = v;
+		}
+
+		int getHead(){
+			return Head;
+		}
+
+		void addNode(Node* n){
+			if(root==NULL){
+				root=n;
+			}
+			else{
+				n->setAddress(root);
+				root=n;
+			}
+		}
+		
+};
+
 
 
 int main(){
