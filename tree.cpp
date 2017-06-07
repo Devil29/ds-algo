@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <cmath>
 
 /**TO DO
 	
@@ -185,6 +186,53 @@ class Tree{
 				cout<<(curr->getVal())<<endl;
 			}
  		}
+ 		int BalancedTree(TreeNode* node){
+ 			if(node==NULL){
+ 				//cout<<"Empty tree."<<endl;
+ 				return 1;
+ 			}
+ 			else{
+ 				int left=maxDepth(node->getLeft());
+ 				int right=maxDepth(node->getRight());
+
+ 				if(left-right < abs(2)){
+ 					return BalancedTree(node->getLeft()) && BalancedTree(node->getRight());
+ 				}
+ 				else{
+ 					return 0;
+ 				}
+
+
+ 			}
+ 		}
+
+ 		void OneLeafNode(TreeNode* curr){
+ 			if(curr==NULL){
+ 				return;
+ 			}
+ 			else{
+ 				if(curr->getLeft()==NULL && curr->getRight()==NULL){
+ 					return;
+ 				}
+	 			OneLeafNode(curr->getLeft());
+				OneLeafNode(curr->getRight());
+				if((curr->getLeft() == NULL && curr->getRight()!=NULL) || (curr->getRight()==NULL && curr->getLeft()!=NULL)){
+					cout<<(curr->getVal())<<endl;
+				}
+ 			}
+ 		}
+ 		void BothChild(TreeNode* curr){
+ 			if(curr==NULL){
+ 				return;
+ 			}
+ 			else{
+ 				BothChild(curr->getLeft());
+ 				BothChild(curr->getRight());
+ 				if((curr->getLeft() && curr->getRight())){
+ 					cout<<curr->getVal()<<endl;
+ 				}
+ 			}
+ 		}
 };
 
 
@@ -215,6 +263,8 @@ int main(){
         cout<<"6.Quit"<<endl;
 
         cout<<"7. Node with two child."<<endl;
+
+        cout<<"8. Balanced Tree"<<endl;
 
         cout<<"Enter your Choice: ";
 
@@ -282,6 +332,18 @@ int main(){
         case 7:
         	T->NodeTwoChild(T->getRoot());
 
+        	break;
+        case 8:
+        	if(T->BalancedTree(T->getRoot())){
+
+        		cout<<"----------"<<endl;
+        		cout<<"Balanced tree"<<endl;
+        	}
+        	else{
+        		cout<<"----------"<<endl;
+        		cout<<"Not balanced tree"<<endl;
+        	}
+        	
         	break;
 
         default:
