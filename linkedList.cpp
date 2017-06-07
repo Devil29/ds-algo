@@ -100,18 +100,18 @@ class linkedList{
 			temp2->setNext(n);
 		}
 		void deleteLastNode(){
-			if(head==NULL)
+			Node *curr, *prev;
+			if(Head==NULL)
 				cout<<"Empty Linkedlist"<<endl;
 			else{
-				Node curr,prev;
-				prev=head;
-				curr=head;
-				while(curr!=Null){
+				prev=Head;
+				curr=Head;
+				while(curr!=NULL){
 					prev=curr;
 					curr=curr->getNext();
 				}
 				curr=NULL;
-				prev=prev.setNext(NULL);
+				prev->setNext(NULL);
 			}
 		}
 		
