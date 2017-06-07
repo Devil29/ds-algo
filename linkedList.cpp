@@ -63,7 +63,7 @@ class linkedList{
 			return Head;
 		}
 
-		void addNode(Node* n){
+		void addNodeBeg(Node* n){
 			if(Head==NULL){
 				Head=n;
 			}
@@ -72,7 +72,7 @@ class linkedList{
 				Head=n;
 			}
 		}
-		void DeleteNode(){
+		void DeleteNodeBeg(){
 			if(Head==NULL){
 				cout<<"LinkedList is empty."<<endl;
 			}
@@ -94,18 +94,38 @@ class linkedList{
 			}
 			
 		void deleteLastNode(){
-			if(head==NULL)
+			if(Head==NULL)
 				cout<<"Empty Linkedlist"<<endl;
 			else{
 				Node curr,prev;
-				prev=head;
-				curr=head;
+				prev=Head;
+				curr=Head;
 				while(curr!=Null){
 					prev=curr;
 					curr=curr->getNext();
 				}
 				curr=NULL;
 				prev=prev.setNext(NULL);
+			}
+		}
+		void AddAtMid(Node* n){
+			int x;
+			Node curr,next;
+			cout<<"Enter the position."<<endl;
+			cin>>x;
+			curr=Head;
+			while(x!=0){
+				if(curr==NULL){
+					cout<<"Empty LinkedList"<<endl;
+					return;
+				}
+				else{
+					curr=curr->getNext();
+					n--;
+				}
+				next=curr->getNext();
+				curr->setNext(n);
+				n->setNext(next);
 			}
 		}
 
