@@ -4,13 +4,9 @@
 /**TO DO
 	
 	levelorder
-	find all tree with one child
-	find all tree with two childs
 	find the diameter of tree(?)
 	check tree is symmetric or not
 	find tree is balanced or not
-	Max root to leave sum
-	min  root to leave sum
 	Find the common ansestor of two node
 	convert a tree to linked list
 
@@ -99,7 +95,7 @@ class Tree{
 
  		void addNodeToTree(TreeNode* curr,TreeNode* newNode ){
 		
-			if(curr->getVal() > newNode->getVal()){
+			if(curr->getVal() >= newNode->getVal()){
 				if(curr->getLeft()==NULL)
 					curr->setLeft(newNode);
 				else
@@ -196,6 +192,44 @@ class Tree{
 				cout<<(curr->getVal())<<endl;
 			}
  		}
+
+ 		int max(int a, int b){
+ 			return (a >= b)? a: b;
+ 		}
+ 
+		int maxPathSum(TreeNode* curr){
+		    if(curr==NULL)
+		    	return 0;
+		    if(!curr->getLeft() && !curr->getRight())
+		    	return curr->getVal();
+		    int ls = maxPathSum(curr->getLeft());
+		    int rs = maxPathSum(curr->getRight());
+
+			if(curr->getLeft() && curr->getRight()){
+				return max(ls, rs) + curr->getVal();
+			}
+
+		    return (!curr->getLeft())? rs + curr->getVal(): ls + curr->getVal();
+		}
+
+		int min(int a, int b){
+			return (a <= b)? a: b;
+		}
+
+		int minPathSum(TreeNode* curr){
+		    if(curr==NULL)
+		    	return 0;
+		    if(!curr->getLeft() && !curr->getRight())
+		    	return curr->getVal();
+		    int ls = minPathSum(curr->getLeft());
+		    int rs = minPathSum(curr->getRight());
+
+			if(curr->getLeft() && curr->getRight()){
+				return min(ls, rs) + curr->getVal();
+			}
+			
+		    return (!curr->getLeft())? rs + curr->getVal(): ls + curr->getVal();
+		}
 };
 
 
@@ -204,7 +238,7 @@ int main(){
 	Tree* T =  new Tree();
 
 	TreeNode* tempRoot;
-	int choice,item,depthMax,depthMin;
+	int choice,item,depthMax,depthMin, sumMax, sumMin;
 	while (1)
 
     {
@@ -277,10 +311,10 @@ int main(){
         case 4:
 
             T->LeafNode(T->getRoot());
-            cout<<"\n-------------"<<endl;
+            cout<<"\n------One child-------"<<endl;
             T->oneChildLeaf(T->getRoot());
-            cout<<"\n-------------"<<endl;
-
+            cout<<"\n------Two child-------"<<endl;
+            T->twoChildLeaf(T->getRoot());
             break;
 
         case 5:
@@ -290,6 +324,15 @@ int main(){
             break;
         case 6:
         	exit(0);
+        	break;
+
+        case 7:
+
+        	sumMax = T->maxPathSum(T->getRoot());
+        	cout<<sumMax<<endl;
+        	sumMin = T->minPathSum(T->getRoot());
+        	cout<<sumMin<<endl;
+
         	break;
 
         default:
