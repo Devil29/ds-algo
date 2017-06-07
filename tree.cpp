@@ -4,7 +4,6 @@
 /**TO DO
 	
 	levelorder
-	Find all leaf node of tree
 	find all tree with one child
 	find all tree with two childs
 	find the diameter of tree(?)
@@ -176,6 +175,16 @@ class Tree{
 				cout<<(curr->getVal())<<endl;
 			}
  		}
+ 		void NodeTwoChild(TreeNode* curr){
+ 			if(curr==NULL){
+ 				return;
+ 			}
+ 			NodeTwoChild(curr->getLeft());
+			NodeTwoChild(curr->getRight());
+			if((curr->getRight() && curr->getLeft())){
+				cout<<(curr->getVal())<<endl;
+			}
+ 		}
 };
 
 
@@ -204,6 +213,8 @@ int main(){
         cout<<"4.Leaf NOde"<<endl;
 
         cout<<"6.Quit"<<endl;
+
+        cout<<"7. Node with two child."<<endl;
 
         cout<<"Enter your Choice: ";
 
@@ -267,6 +278,10 @@ int main(){
             break;
         case 6:
         	exit(0);
+        	break;
+        case 7:
+        	T->NodeTwoChild(T->getRoot());
+
         	break;
 
         default:
