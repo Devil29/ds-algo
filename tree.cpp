@@ -286,7 +286,8 @@ class Tree{
 		        return;
 		    }
 		    if(height==1){
-		    	cout<<curr->getVal()<<endl;
+		    	cout<<(curr->getVal());
+		    	cout<<"->";
 		    }
 		   	if(height>1){
 		   		LevelOrder(curr->getLeft() , height-1);
@@ -298,6 +299,7 @@ class Tree{
 			int height=maxDepth(curr);
 			for(int i=1;i<=height;i++){
 				LevelOrder(curr, i);
+				cout<<""<<endl;
 			}
 		}
 };
@@ -432,7 +434,7 @@ int main(){
         	cout<<T->DiameterOfTree(T->getRoot())<<endl;
         	break;
         case 12:
-        	cout<<(T->LevelOrder(T->getRoot(), height))<<endl;
+        	T->printLevelOrder(T->getRoot());
         	break;
 
         default:
