@@ -233,6 +233,48 @@ class Tree{
  				}
  			}
  		}
+
+ 		int PathMin(TreeNode* curr){
+ 			if(curr==NULL)
+ 				return 0;
+ 			
+			int leftDepth=PathMin(curr->getLeft());
+			int rightDepth=PathMin(curr->getRight());
+			if(curr->getLeft() && curr->getRight()){
+				if(leftDepth<rightDepth){
+					return(leftDepth + curr->getVal());
+				}
+				else{
+					return(rightDepth + curr->getVal());
+				}
+			}
+ 			if(!curr->getRight()){
+ 				return(leftDepth + curr->getVal());
+ 			}else{
+ 				return(rightDepth + curr->getVal());
+	 		}
+ 		}
+
+ 		int PathMax(TreeNode* curr){
+ 			if(curr==NULL){
+ 				return 0;
+ 			}
+ 			int left=PathMax(curr->getLeft());
+ 			int right=PathMax(curr->getRight());
+ 			if(curr->getLeft() && curr->getRight()){
+ 				if(left>right){
+ 					return left + curr->getVal();
+ 				}
+ 				else{
+ 					return right + curr->getVal();
+ 				}
+ 			}
+ 			if(!curr->getRight()){
+ 				return(left + curr->getVal());
+ 			}else{
+ 				return(right + curr->getVal());
+	 		}
+ 		}
 };
 
 
@@ -265,6 +307,10 @@ int main(){
         cout<<"7. Node with two child."<<endl;
 
         cout<<"8. Balanced Tree"<<endl;
+
+        cout<<"9. Minimum path"<<endl;
+
+        cout<<"10.Maximum path"<<endl;
 
         cout<<"Enter your Choice: ";
 
@@ -344,6 +390,13 @@ int main(){
         		cout<<"Not balanced tree"<<endl;
         	}
         	
+        	break;
+        case 9:
+        	cout<<T->PathMin(T->getRoot())<<endl;
+        	break;
+
+        case 10:
+        	cout<<T->PathMax(T->getRoot())<<endl;
         	break;
 
         default:
