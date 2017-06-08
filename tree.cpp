@@ -280,7 +280,26 @@ class Tree{
             return (leftDepth+rightDepth);
  		}
 
-
+ 		void LevelOrder(TreeNode* curr, int height)
+		{
+		    if (curr == NULL){
+		        return;
+		    }
+		    if(height==1){
+		    	cout<<curr->getVal()<<endl;
+		    }
+		   	if(height>1){
+		   		LevelOrder(curr->getLeft() , height-1);
+		   		LevelOrder(curr->getRight() , height-1);
+		   	}
+		    
+		}
+		void printLevelOrder(TreeNode* curr){
+			int height=maxDepth(curr);
+			for(int i=1;i<=height;i++){
+				LevelOrder(curr, i);
+			}
+		}
 };
 
 
@@ -319,6 +338,8 @@ int main(){
         cout<<"10.Maximum path"<<endl;
 
         cout<<"11.Diameter of tree."<<endl;
+
+        cout<<"12. Level Order traversal of tree"<<endl;
 
         cout<<"Enter your Choice: ";
 
@@ -409,6 +430,9 @@ int main(){
 
         case 11:
         	cout<<T->DiameterOfTree(T->getRoot())<<endl;
+        	break;
+        case 12:
+        	cout<<(T->LevelOrder(T->getRoot(), height))<<endl;
         	break;
 
         default:
