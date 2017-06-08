@@ -5,13 +5,8 @@
 /**TO DO
 	
 	levelorder
-	find all tree with one child
-	find all tree with two childs
 	find the diameter of tree(?)
 	check tree is symmetric or not
-	find tree is balanced or not
-	Max root to leave sum
-	min  root to leave sum
 	Find the common ansestor of two node
 	convert a tree to linked list
 
@@ -275,6 +270,17 @@ class Tree{
  				return(right + curr->getVal());
 	 		}
  		}
+
+ 		int DiameterOfTree(TreeNode* curr){
+ 			if(curr==NULL){
+ 				return 0;
+ 			}
+            int leftDepth = maxDepth(curr->getLeft());
+            int rightDepth = maxDepth(curr->getRight());
+            return (leftDepth+rightDepth);
+ 		}
+
+
 };
 
 
@@ -311,6 +317,8 @@ int main(){
         cout<<"9. Minimum path"<<endl;
 
         cout<<"10.Maximum path"<<endl;
+
+        cout<<"11.Diameter of tree."<<endl;
 
         cout<<"Enter your Choice: ";
 
@@ -397,6 +405,10 @@ int main(){
 
         case 10:
         	cout<<T->PathMax(T->getRoot())<<endl;
+        	break;
+
+        case 11:
+        	cout<<T->DiameterOfTree(T->getRoot())<<endl;
         	break;
 
         default:
