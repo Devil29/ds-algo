@@ -3,11 +3,8 @@
 
 /**TO DO
 	
-	levelorder
-	find the diameter of tree(?)
-	check tree is symmetric or not
-	find tree is balanced or not
-	Find the common ansestor of two node
+	levelorder(using queue)
+	Find the common ansestor of two node(3 cases both l, r or l&r)
 	convert a tree to linked list
 
 */
@@ -230,6 +227,86 @@ class Tree{
 			
 		    return (!curr->getLeft())? rs + curr->getVal(): ls + curr->getVal();
 		}
+
+		bool isMirror(TreeNode* root1, TreeNode* root2){
+		    if (root1 == NULL && root2 == NULL)
+		        return true;
+		    //if we have to check value also then compare val in if condition
+		    if (root1 && root2 )
+		        return isMirror(root1->getLeft(), root2->getRight()) && isMirror(root1->getRight(), root2->getLeft());
+
+    		return false;
+		}
+
+		bool isSymmetric(TreeNode* root)
+		{
+		    return isMirror(root, root);
+		}
+
+		int diameter(TreeNode* curr){
+		   if (curr == NULL)
+		     return 0;
+
+		  int lheight = maxDepth(curr->getLeft());
+		  int rheight = maxDepth(curr->getRight());
+
+		  int ldiameter = diameter(curr->getLeft());
+		  int rdiameter = diameter(curr->getRight());
+		 //explain
+		  return max(lheight + rheight + 1, max(ldiameter, rdiameter));
+		} 
+
+		// void getLeftNode(TreeNode* root, int n){
+		// 	if (root == NULL) {
+	 //    		return; 
+	 //    	}
+  //       	getLeftNode(root->getLeft(), n); 
+  //       	getLeftNode(root->getRight(), n); 
+        	
+  //       	if(root->getLeft()->getVal()==n){
+  //       		return left;
+  //       	}
+  //       	return root;
+		// }
+
+		void levelOrder(TreeNode* node){
+	        int h = maxDepth(node);
+	        int i;
+	        for (i=1; i<=h; i++){
+	            printlevelOrder(node, i);
+	            cout<<"\n";
+	        }
+	    }
+
+	    void printlevelOrder(TreeNode* curr ,int level){
+	        if (curr == NULL)
+	            return;
+	        if (level == 1){
+	            cout<<(curr->getVal());
+	        	cout<<" ";
+	        }	
+	        else if (level > 1)
+	        {
+	            printlevelOrder(curr->getLeft(), level-1);
+	            printlevelOrder(curr->getRight(), level-1);
+	        }
+	    }
+
+	    bool isBalanced(TreeNode* root){
+		   int lh; 
+		   int rh; 
+
+		   if(root == NULL)
+		    return 1; 
+
+		   lh = maxDepth(root->getLeft());
+		   rh = maxDepth(root->getRight());
+		 
+		   if( abs(lh-rh) <= 1 && isBalanced(root->getLeft()) && isBalanced(root->getRight()))
+		     return 1;
+		 
+		   return 0;
+		}
 };
 
 
@@ -256,6 +333,18 @@ int main(){
         cout<<"3.Traverse the tree"<<endl;
         
         cout<<"4.Leaf Node"<<endl;
+
+        cout<<"5.Invert Tree"<<endl;
+
+        cout<<"7.Sum max and min"<<endl;
+
+        cout<<"8.isSymmetric"<<endl;
+
+        cout<<"9.diameter"<<endl;
+
+        cout<<"10.Lowest common ansestor"<<endl;
+
+        cout<<"11.isBalanced"<<endl;
 
         cout<<"6.Quit"<<endl;
 
@@ -290,26 +379,32 @@ int main(){
 	        cout<<"\n-------------"<<endl;
 
 	        cout<<"Inorder"<<endl;
-
 	        cout<<"\n-------------"<<endl;
             T->printInOrder(T->getRoot());
             cout<<"\n-------------"<<endl;
 
 	        cout<<"PostOrder"<<endl;
-
 	        cout<<"\n-------------"<<endl;
 			T->printPostOrder(T->getRoot());
 			cout<<"\n-------------"<<endl;
 
 	        cout<<"PreOrder"<<endl;
-
 	        cout<<"\n-------------"<<endl;
-			T->printPreOrder(T->getRoot());
+	        T->printPreOrder(T->getRoot());
+	        cout<<"\n-------------"<<endl;
+
+	        cout<<"levelOrder"<<endl;
+	        cout<<"\n-------------"<<endl;
+	        T->levelOrder(T->getRoot());
+	        cout<<"\n-------------"<<endl;
+
+			
 
             break;
 
         case 4:
 
+        	cout<<"\n------No  child-------"<<endl;
             T->LeafNode(T->getRoot());
             cout<<"\n------One child-------"<<endl;
             T->oneChildLeaf(T->getRoot());
@@ -320,6 +415,7 @@ int main(){
         case 5:
 
            	tempRoot = T->invertTree(T->getRoot());
+           	cout<<"\n------inverted-------"<<endl;
 
             break;
         case 6:
@@ -335,6 +431,29 @@ int main(){
 
         	break;
 
+        case 8:
+
+        	(T->isSymmetric(T->getRoot())) ? cout<<"is symmetric"<<endl : cout<<"is not symmetric"<<endl;
+        	break;
+
+        case 9:
+
+        	cout<<(T->diameter(T->getRoot()))<<endl;
+
+        	break;
+
+        case 10:
+
+        	
+
+        	break;
+
+        case 11:
+
+        	(T->isBalanced(T->getRoot())) ? cout<<"is Balanced"<<endl : cout<<"is not Balanced"<<endl;
+        	
+        	break;
+
         default:
 
             cout<<"Wrong Choice"<<endl;
@@ -345,5 +464,3 @@ int main(){
 
     return 0;
 }
-
-
